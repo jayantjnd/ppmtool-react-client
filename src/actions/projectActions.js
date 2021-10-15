@@ -21,7 +21,7 @@ export const getProjects = () => async (dispatch) => {
   });
 };
 
-export const getProject = (projectIdentifier) => async (dispatch) => {
+export const getProject = (projectIdentifier, history) => async (dispatch) => {
   try {
     const res = await axios.get(
       `http://localhost:8080/api/project/${projectIdentifier}`
@@ -31,10 +31,7 @@ export const getProject = (projectIdentifier) => async (dispatch) => {
       type: GET_PROJECT,
       payload: res.data,
     });
-  } catch (err) {
-    dispatch({
-      type: GET_ERRORS,
-      payload: err.response.data,
-    });
+  } catch (error) {
+    history.push("/dashboard");
   }
 };
