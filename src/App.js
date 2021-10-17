@@ -7,6 +7,8 @@ import AddProject from "./components/Project/AddProject";
 import { Provider } from "react-redux";
 import store from "./store";
 import UpdateProject from "./components/Project/UpdateProject";
+import ProjectBoard from "./components/ProjectBoard/ProjectBoard";
+import AddProjectTask from "./components/ProjectBoard/ProjectTasks/AddProjectTask";
 
 function App() {
   return (
@@ -20,6 +22,16 @@ function App() {
             exact
             path="/updateProject/:projectIdentifier"
             component={UpdateProject}
+          />
+          <Route
+            exact
+            path="/projectBoard/:projectIdentifier"
+            component={ProjectBoard}
+          />
+          <Route
+            exact
+            path="/addProjectTask/:projectIdentifier"
+            component={AddProjectTask}
           />
         </div>
       </Router>
