@@ -36,7 +36,11 @@ class UpdateProjectTask extends Component {
     const { projectIdentifier } = this.props.match.params;
     const { projectSequence } = this.props.match.params;
 
-    this.props.getProjectTask(projectIdentifier, projectSequence);
+    this.props.getProjectTask(
+      projectIdentifier,
+      projectSequence,
+      this.props.history
+    );
   }
 
   componentWillReceiveProps(nextProps) {
