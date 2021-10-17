@@ -9,6 +9,7 @@ import store from "./store";
 import UpdateProject from "./components/Project/UpdateProject";
 import ProjectBoard from "./components/ProjectBoard/ProjectBoard";
 import AddProjectTask from "./components/ProjectBoard/ProjectTasks/AddProjectTask";
+import UpdateProjectTask from "./components/ProjectBoard/ProjectTasks/UpdateProjectTask";
 
 function App() {
   return (
@@ -32,6 +33,11 @@ function App() {
             exact
             path="/addProjectTask/:projectIdentifier"
             component={AddProjectTask}
+          />
+          <Route
+            exact
+            path="/updateProjectTask/:projectIdentifier/:projectSequence"
+            component={UpdateProjectTask}
           />
         </div>
       </Router>

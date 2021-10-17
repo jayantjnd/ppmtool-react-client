@@ -1,8 +1,10 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
 
 class ProjectTaskItem extends Component {
   render() {
     const { project_task } = this.props;
+    const { projectIdentifier } = this.props;
     let priorityString;
     let priorityClass;
 
@@ -27,9 +29,12 @@ class ProjectTaskItem extends Component {
           <p className="card-text text-truncate ">
             {project_task.acceptanceCriteria}
           </p>
-          <a href="#" className="btn btn-primary">
+          <Link
+            to={`/updateProjectTask/${projectIdentifier}/${project_task.projectSequence}`}
+            className="btn btn-primary"
+          >
             View / Update
-          </a>
+          </Link>
 
           <button className="btn btn-danger ml-4">Delete</button>
         </div>

@@ -49,7 +49,12 @@ class ProjectBoard extends Component {
           );
         }
       } else {
-        return <Backlog project_tasks_props={project_tasks} />;
+        return (
+          <Backlog
+            project_tasks_props={project_tasks}
+            projectIdentifier={projectIdentifier}
+          />
+        );
       }
     };
 
