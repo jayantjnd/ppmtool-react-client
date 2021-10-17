@@ -1,9 +1,26 @@
 import React, { Component } from "react";
-import classNames from "classnames";
 import ProjectTaskItem from "./ProjectTasks/ProjectTaskItem";
 
 class Backlog extends Component {
   render() {
+    const { project_tasks_props } = this.props;
+
+    const tasks = project_tasks_props.map((project_task) => (
+      <ProjectTaskItem key={project_task.id} project_task={project_task} />
+    ));
+
+    let toDoItems = tasks.filter(
+      (task) => task.props.project_task.status === "TO_DO"
+    );
+
+    let inProgressItems = tasks.filter(
+      (task) => task.props.project_task.status === "IN_PROGRESS"
+    );
+
+    let doneItems = tasks.filter(
+      (task) => task.props.project_task.status === "DONE"
+    );
+
     return (
       <div className="container">
         <div className="row">
@@ -13,14 +30,7 @@ class Backlog extends Component {
                 <h3>TO DO</h3>
               </div>
             </div>
-
-            {
-              //<!-- SAMPLE PROJECT TASK STARTS HERE -->
-            }
-            <ProjectTaskItem />
-            {
-              //<!-- SAMPLE PROJECT TASK ENDS HERE -->
-            }
+            {toDoItems}
           </div>
           <div className="col-md-4">
             <div className="card text-center mb-2">
@@ -28,13 +38,7 @@ class Backlog extends Component {
                 <h3>In Progress</h3>
               </div>
             </div>
-            {
-              //<!-- SAMPLE PROJECT TASK STARTS HERE -->
-            }
-            <ProjectTaskItem />
-            {
-              //<!-- SAMPLE PROJECT TASK ENDS HERE -->
-            }
+            {inProgressItems}
           </div>
           <div className="col-md-4">
             <div className="card text-center mb-2">
@@ -42,13 +46,7 @@ class Backlog extends Component {
                 <h3>Done</h3>
               </div>
             </div>
-            {
-              //<!-- SAMPLE PROJECT TASK STARTS HERE -->
-            }
-            <ProjectTaskItem />
-            {
-              //<!-- SAMPLE PROJECT TASK ENDS HERE -->
-            }
+            {doneItems}
           </div>
         </div>
       </div>
