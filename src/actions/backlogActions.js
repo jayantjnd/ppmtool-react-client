@@ -22,7 +22,13 @@ export const getBacklog = (backlog_id) => async (dispatch) => {
       type: GET_BACKLOG,
       payload: res.data,
     });
-  } catch (error) {}
+    clearErrors(dispatch);
+  } catch (error) {
+    dispatch({
+      type: GET_ERRORS,
+      payload: error.response.data,
+    });
+  }
 };
 
 const clearErrors = (dispatch) => {
