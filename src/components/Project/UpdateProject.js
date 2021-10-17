@@ -3,7 +3,6 @@ import { getProject, createProject } from "../../actions/projectActions";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import classNames from "classnames";
-import ProjectItem from "./ProjectItem";
 
 class UpdateProject extends Component {
   // set state
@@ -73,7 +72,6 @@ class UpdateProject extends Component {
   }
 
   render() {
-    const { project } = this.props.project;
     const { errors } = this.state;
 
     return (
