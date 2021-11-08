@@ -13,6 +13,27 @@ import UpdateProjectTask from "./components/ProjectBoard/ProjectTasks/UpdateProj
 import Landing from "./components/Layout/Landing";
 import Register from "./components/UserManagement/Register";
 import Login from "./components/UserManagement/Login";
+import jwt_decode from "jwt-decode";
+import setJWTInHeader from "./securityUtils/setJWTInHeader";
+import { SET_CURRENT_USER } from "./actions/types";
+import { logout } from "./actions/securityActions";
+
+const jwtToken = localStorage.jwtToken;
+
+if (jwtToken) {
+  setJWTInHeader(jwtToken);
+  const decodedToken = jwt_decode(jwtToken);
+  store.dispatch({
+    type: SET_CURRENT_USER,
+    payload: decodedToken,
+  });
+
+  const currentTime = Date.now() / 1000;
+  if (decodedToken.exp < currentTime) {
+    store.dispatch(logout());
+    window.location.href = "/";
+  }
+}
 
 function App() {
   return (
