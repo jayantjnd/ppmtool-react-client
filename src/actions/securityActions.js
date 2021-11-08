@@ -40,6 +40,11 @@ export const login = (loginRequest) => async (dispatch) => {
       type: SET_CURRENT_USER,
       payload: decodedToken,
     });
+
+    dispatch({
+      type: GET_ERRORS,
+      payload: {},
+    });
   } catch (error) {
     dispatch({
       type: GET_ERRORS,
